@@ -1,13 +1,14 @@
 console.log('jq and js');
 
-$( function () {
+$(function () {
     console.log('in Ready');
-    $('#employeeSubmit').on( 'click', getEmployeeInfo );
+    appendDom();
+    $('#employeeSubmit').on('click', getEmployeeInfo);
 });
 
 let employees = [];
 
-function addEmployee(firstNameInput, lastNameInput, idInput, titleInput, salaryInput){
+function addEmployee(firstNameInput, lastNameInput, idInput, titleInput, salaryInput) {
     console.log('in addEmployee');
     // Create new object to house all input information
     const newEmployeeObject = {
@@ -25,7 +26,7 @@ function addEmployee(firstNameInput, lastNameInput, idInput, titleInput, salaryI
 } // end addEmployee
 addEmployee('Greg', 'Johnson', 235245, 'Software dev', 75000); // Testing if addEmployee works
 
-function getEmployeeInfo () {
+function getEmployeeInfo() {
     console.log('in getEmployeeInfo');
     // Define values for inputs within variables
     const firstNameVal = $('#firstNameInput').val();
@@ -48,19 +49,19 @@ function getEmployeeInfo () {
 }
 
 function appendDom() {
-    console.log( 'in appendDom' );
-    $( '#tableBody' ).empty();
-  
+    console.log('in appendDom');
+    // Empty the table
+    $('#tableBody').empty();
+    // Loop over employees array and append employees on DOM
     for (let i = 0; i < employees.length; i++) {
-      const element = employees[i];
-  
-      $( '#tableBody' ).append( `<tr>
-        <td>${ element.firstName }</td>
-        <td>${ element.lastName }</td>
-        <td>${ element.idNumber }</td>
-        <td>${ element.title }</td>
-        <td>${ element.salary }</td>
-      </tr>` )
+        const element = employees[i];
+        $('#tableBody').append(`<tr>
+        <td>${element.firstName}</td>
+        <td>${element.lastName}</td>
+        <td>${element.idNumber}</td>
+        <td>${element.title}</td>
+        <td>${element.salary}</td>
+      </tr>`); 
     }
     return true;
 }
