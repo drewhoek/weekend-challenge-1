@@ -48,5 +48,19 @@ function getEmployeeInfo () {
 }
 
 function appendDom() {
-
+    console.log( 'in appendDom' );
+    $( '#tableBody' ).empty();
+  
+    for (let i = 0; i < employees.length; i++) {
+      const element = employees[i];
+  
+      $( '#tableBody' ).append( `<tr>
+        <td>${ element.firstName }</td>
+        <td>${ element.lastName }</td>
+        <td>${ element.idNumber }</td>
+        <td>${ element.title }</td>
+        <td>${ element.salary }</td>
+      </tr>` )
+    }
+    return true;
 }
