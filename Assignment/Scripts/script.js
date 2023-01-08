@@ -42,16 +42,19 @@ function getEmployeeInfo() {
     $('#idInput').val('');
     $('#titleInput').val('');
     $('#salaryInput').val('');
+
     // Call addEmployee to push input info to the global array
     addEmployee(firstNameVal, lastNameVal, idNumberVal, titleVal, salaryVal);
+
     // Call append DOM function
     appendDom();
-}
+} // end getEmployeeInfo
 
 function appendDom() {
     console.log('in appendDom');
     // Empty the table
     $('#tableBody').empty();
+    
     // Loop over employees array and append employees on DOM
     for (let i = 0; i < employees.length; i++) {
         const element = employees[i];
@@ -64,4 +67,8 @@ function appendDom() {
       </tr>`); 
     }
     return true;
+} // end appendDOM
+
+function monthlyCosts() {
+    console.log('in monthlyCosts');
 }
