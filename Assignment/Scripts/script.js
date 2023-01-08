@@ -5,6 +5,7 @@ $(function () {
     appendDom();
     $('#employeeSubmit').on('click', getEmployeeInfo);
     $('#tableBody').on('click', '.delete', handleDelete);
+    $('')
 });
 
 let employees = [];
@@ -78,4 +79,6 @@ function appendDom() {
 
 function handleDelete(event) {
     $(event.target).closest('tr').remove();
+    // let totalMonthlyCost = $('#totalCostVal').data();
+    // console.log(totalMonthlyCost);
 }
