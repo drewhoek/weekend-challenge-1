@@ -4,9 +4,11 @@ $(function () {
     console.log('in Ready');
     appendDom();
     $('#employeeSubmit').on('click', getEmployeeInfo);
+    $('#tableBody').on('click', '.delete', handleDelete);
 });
 
 let employees = [];
+let monthlyCosts = 0;
 
 function addEmployee(firstNameInput, lastNameInput, idInput, titleInput, salaryInput) {
     console.log('in addEmployee');
@@ -24,7 +26,7 @@ function addEmployee(firstNameInput, lastNameInput, idInput, titleInput, salaryI
     console.log('current employees:', employees);
     return true;
 } // end addEmployee
-addEmployee('Greg', 'Johnson', 235245, 'Software dev', 75000); // Testing if addEmployee works
+// addEmployee('Greg', 'Johnson', 235245, 'Software dev', 75000); // Testing if addEmployee works
 
 function getEmployeeInfo() {
     console.log('in getEmployeeInfo');
@@ -46,6 +48,10 @@ function getEmployeeInfo() {
     // Call addEmployee to push input info to the global array
     addEmployee(firstNameVal, lastNameVal, idNumberVal, titleVal, salaryVal);
 
+    // Append Monthly costs to DOM
+    monthlyCosts += (salaryVal / 12);
+    $('#totalCostVal').text(monthlyCosts);
+
     // Call append DOM function
     appendDom();
 } // end getEmployeeInfo
@@ -54,7 +60,7 @@ function appendDom() {
     console.log('in appendDom');
     // Empty the table
     $('#tableBody').empty();
-    
+
     // Loop over employees array and append employees on DOM
     for (let i = 0; i < employees.length; i++) {
         const element = employees[i];
@@ -64,11 +70,12 @@ function appendDom() {
         <td>${element.idNumber}</td>
         <td>${element.title}</td>
         <td>${element.salary}</td>
+        <td><button class = "delete">Delete</button></td>
       </tr>`); 
     }
     return true;
 } // end appendDOM
 
-function monthlyCosts() {
-    console.log('in monthlyCosts');
+function handleDelete(event) {
+    $(event.target).closest('tr').remove();
 }
