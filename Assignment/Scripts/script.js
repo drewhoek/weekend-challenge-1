@@ -53,6 +53,15 @@ function getEmployeeInfo() {
     monthlyCosts += (salaryVal / 12);
     $('#totalCostVal').text(monthlyCosts);
 
+    if (monthlyCosts > 20000) {
+        // If we have high monthly costs, turn the background color red
+        $('#total-monthly-cost').css('background-color', 'red');
+        $('#total-monthly-cost').css('color', 'white');
+        console.log('We have high monthly costs!')
+    } else {
+        console.log('We have low monthly costs')
+    }
+
     // Call append DOM function
     appendDom();
 } // end getEmployeeInfo
@@ -72,7 +81,7 @@ function appendDom() {
         <td>${element.title}</td>
         <td>${element.salary}</td>
         <td><button class = "delete">Delete</button></td>
-      </tr>`); 
+      </tr>`);
     }
     return true;
 } // end appendDOM
