@@ -53,7 +53,7 @@ function getEmployeeInfo() {
     $('#totalCostVal').text(monthlyCosts);
 
     if (monthlyCosts > 20000) {
-        // If we have high monthly costs, turn the background color red
+        // If we have high monthly costs, turn the text color red
         $('#total-monthly-cost').css('color', 'red');
         console.log('We have high monthly costs!');
     } else {
@@ -87,7 +87,7 @@ function appendDom() {
 function handleDelete(event) {
     $(event.target).closest('tr').remove();
     console.log(monthlyCosts);
-    
+
     // vvv Tried to get this working. No such luck this time around. vvv
     //let costToSubtract = Number($(event.target).find('.salary').text());    
     //console.log(costToSubtract);
