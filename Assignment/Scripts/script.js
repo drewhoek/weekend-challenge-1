@@ -72,7 +72,7 @@ function appendDom() {
     // Loop over employees array and append employees on DOM
     for (let i = 0; i < employees.length; i++) {
         const element = employees[i];
-        $('#tableBody').append(`<tr>
+        $('#tableBody').append(`<tr data-index="${element}">
         <td>${element.firstName}</td>
         <td>${element.lastName}</td>
         <td>${element.idNumber}</td>
@@ -88,6 +88,7 @@ function handleDelete(event) {
     $(event.target).closest('tr').remove();
     console.log(monthlyCosts);
     
-    let costToSubtract = Number($(event.target).find('.salary').text());    
-    console.log(costToSubtract);
+    // vvv Tried to get this working. No such luck this time around. vvv
+    //let costToSubtract = Number($(event.target).find('.salary').text());    
+    //console.log(costToSubtract);
 }
