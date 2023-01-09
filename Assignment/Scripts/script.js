@@ -5,7 +5,6 @@ $(function () {
     appendDom();
     $('#employeeSubmit').on('click', getEmployeeInfo);
     $('#tableBody').on('click', '.delete', handleDelete);
-    $('')
 });
 
 let employees = [];
@@ -55,11 +54,10 @@ function getEmployeeInfo() {
 
     if (monthlyCosts > 20000) {
         // If we have high monthly costs, turn the background color red
-        $('#total-monthly-cost').css('background-color', 'red');
-        $('#total-monthly-cost').css('color', 'white');
-        console.log('We have high monthly costs!')
+        $('#total-monthly-cost').css('color', 'red');
+        console.log('We have high monthly costs!');
     } else {
-        console.log('We have low monthly costs')
+        console.log('We have low monthly costs');
     }
 
     // Call append DOM function
@@ -79,7 +77,7 @@ function appendDom() {
         <td>${element.lastName}</td>
         <td>${element.idNumber}</td>
         <td>${element.title}</td>
-        <td>${element.salary}</td>
+        <td class="salary">${element.salary}</td>
         <td><button class = "delete">Delete</button></td>
       </tr>`);
     }
@@ -88,6 +86,8 @@ function appendDom() {
 
 function handleDelete(event) {
     $(event.target).closest('tr').remove();
-    // let totalMonthlyCost = $('#totalCostVal').data();
-    // console.log(totalMonthlyCost);
+    console.log(monthlyCosts);
+    
+    let costToSubtract = Number($(event.target).find('.salary').text());    
+    console.log(costToSubtract);
 }
